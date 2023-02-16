@@ -14,11 +14,14 @@ export const styles = StyleSheet.create({
     color: 'rgba(255,255,255,0.5)',
     fontSize: 30,
     textAlign: 'right',
+    marginHorizontal: 20,
   },
   resultado: {
     color: 'white',
-    fontSize: 60,
+    fontSize: 80,
+    fontWeight: '300',
     textAlign: 'right',
+    marginHorizontal: 10,
     marginBottom: 10,
   },
   fila: {
@@ -37,8 +40,8 @@ export const styles = StyleSheet.create({
   },
   botonTexto: {
     textAlign: 'center',
-    fontSize: 35,
+    fontSize: 37,
     color: 'white',
-    fontWeight: 'bold',
+    fontWeight: '400',
   },
 });
