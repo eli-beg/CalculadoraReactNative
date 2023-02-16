@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Text, View} from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
 import {BotonCalculadora} from '../components/BotonCalculadora';
 import {useCalculadora} from '../hooks/useCalculadora';
 import {styles} from '../theme/appTheme';
@@ -19,6 +20,10 @@ export const CalculadoraScreen = () => {
     numeroAnterior,
     displayNumero,
   } = useCalculadora();
+
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
 
   return (
     <View style={styles.calculadoraContainer}>
