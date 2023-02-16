@@ -10,15 +10,17 @@ enum Operadores {
 export const useCalculadora = () => {
   const [numero, setNumero] = useState('0');
   const [numeroAnterior, setNumeroAnterior] = useState('0');
-
+  const [displayNumero, setDisplayNumero] = useState('');
   const ultimaOperacion = useRef<Operadores>();
 
   const limpiar = () => {
     setNumero('0');
     setNumeroAnterior('0');
+    setDisplayNumero('');
   };
 
   const armarNumero = (numeroTexto: string) => {
+    setDisplayNumero('');
     //no aceptar doble punto
     if (numero.includes('.') && numeroTexto === '.') {
       return;
@@ -36,7 +38,7 @@ export const useCalculadora = () => {
         setNumero(numeroTexto);
         //evitar el 000.00
       } else if (numeroTexto === '0' && !numero.includes('.')) {
-        setNumero(numero);
+        setNumero(numero + numeroTexto);
       } else if (numeroTexto !== '0' && numero.includes('.')) {
         setNumero(numero + numeroTexto);
       }
@@ -92,19 +94,23 @@ export const useCalculadora = () => {
 
     switch (ultimaOperacion.current) {
       case Operadores.sumar:
-        setNumero(`${num1 + num2}`);
+        setDisplayNumero(`${num1 + num2}`);
+        setNumero('0');
 
         break;
       case Operadores.restar:
-        setNumero(`${num2 - num1}`);
+        setDisplayNumero(`${num2 - num1}`);
+        setNumero('0');
 
         break;
       case Operadores.multiplicar:
-        setNumero(`${num1 * num2}`);
+        setDisplayNumero(`${num1 * num2}`);
+        setNumero('0');
 
         break;
       case Operadores.dividir:
-        setNumero(`${num2 / num1}`);
+        setDisplayNumero(`${num2 / num1}`);
+        setNumero('0');
 
         break;
     }
@@ -123,5 +129,6 @@ export const useCalculadora = () => {
     calcular,
     numero,
     numeroAnterior,
+    displayNumero,
   };
 };
